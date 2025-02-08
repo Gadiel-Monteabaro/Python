@@ -18,3 +18,18 @@ print("El amigo eliminado es ", amigoEliminado)
 # Devuelve un arreglo ordenado alfabéticamente
 amigos.sort()
 print("Amigos ordenados alfabeticamente ", amigos)
+
+
+friends = ['Ana', 'Monica', 'José', 'Camila',
+           'Raquel', 'Matías', ['Gadiel', 'Melisa']]
+
+countFriends = 0
+for i in friends:
+    if (type(i) == list):
+        for j in i:
+            countFriends += 1
+            break
+
+    countFriends += 1
+
+print(countFriends)
