@@ -15,3 +15,12 @@ elif numero_2 > numero_1 and numero_2 > numero_3:
     print(f"El mayor de los tres números es: {numero_2}")
 else:
     print(f"El mayor de los tres números es: {numero_3}")
+
+lista = [12, -5, 8]
+
+mayor = lista[0]
+for i in lista:
+    if i > mayor:
+        mayor = i
+        
+print(f"El mayor de los tres números es: {mayor}")
