@@ -8,4 +8,15 @@ numeroIngresado = int(input("Ingrese un número: "))
 if numeroIngresado in numeros:
   print("El número ingresado se encuentra en la tupla")
 else:
+  print("El número ingresado no se encuentra en la tupla")   
+  
+comprobar = False
+for i in numeros:
+  if i == numeroIngresado:
+    comprobar = True
+    break
+
+if comprobar:
+  print("El número ingresado se encuentra en la tupla")
+else:
   print("El número ingresado no se encuentra en la tupla")
