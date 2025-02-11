@@ -12,10 +12,10 @@ def actualizar_producto(nombre, cantidad):
         if producto['nombre'] == nombre:
             producto['cantidad'] = cantidad
             return
-    print(f"Producto {nombre} no encontrado.")
-    mostrar_inventario()
+    print(f"Producto {nombre} no encontrado.")  
 
 def mostrar_inventario():
+    
     for producto in productos:
         print(
             f"Producto: {producto['nombre']}, Cantidad: {producto['cantidad']}")
@@ -33,5 +33,5 @@ if actualizar == 's':
     producto = input("Ingrese el nombre del producto: ")
     cantidad = int(input("Ingrese la nueva cantidad del producto: "))
     actualizar_producto(producto, cantidad)
-  
+
 mostrar_inventario()
