@@ -7,23 +7,24 @@ INVENTARIO = 'inventario.json'
 def cargar_inventario():
   if os.path.exists(INVENTARIO):
     with open(INVENTARIO, 'r', encoding="utf-8") as archivo:
-      return json.load(archivo) 
+      return json.load(archivo)     
   return []
 
 # Guardar los productos en el inventario
 def guardar_inventario(productos):
   with open(INVENTARIO, 'w', encoding="utf-8") as archivo:
-    json.dump(productos, archivo, indent=4)
+    json.dump(productos, archivo, indent=2) 
 
 # Agregar un producto al inventario
 def agregar_producto(productos, nombre, cantidad):
   for producto in productos:
-    if producto['nombre'] == nombre:
+    if producto['nombre'].lower() == nombre.lower():
       producto['cantidad'] += cantidad
       return
-  productos.append({'nombre': nombre, 'cantidad': cantidad})
+  count = len(productos)
+  productos.append({'id': count + 1,'nombre': nombre, 'cantidad': cantidad})
   guardar_inventario(productos)
-
+  
 # Actualizar un producto en el inventario
 def actualizar_producto(productos, nombre, cantidad):
   for producto in productos:
@@ -31,29 +32,48 @@ def actualizar_producto(productos, nombre, cantidad):
       producto['cantidad'] = cantidad
       guardar_inventario(productos)
       return
-  print(f"Producto {nombre} no encontrado.")
+  print(f"Producto {nombre} no encontrado.") 
 
 # Mostrar el inventario
 def mostrar_inventario(productos):
   for producto in productos:
     print(
       f"Producto: {producto['nombre']}, Cantidad: {producto['cantidad']}")
+    
+def main():
+  productos = cargar_inventario()
+  
+  while True:
+    accion = input("Desea agregar un producto (a), actualizar un producto (u), mostrar inventario (m) o salir (s): ")
+    
+    if accion == 'a':
+      nombre = input("Ingrese el nombre del producto: ")
+      try:
+        cantidad = int(input("Ingrese la cantidad del producto: "))
+        agregar_producto(productos, nombre, cantidad)
+        print("Producto agregado")
+      except ValueError:
+        print("Error: La cantidad debe ser un número entero.")
 
+    elif accion == 'u':
+      producto = input("Ingrese el nombre del producto: ")
+      try:
+        cantidad = int(input("Ingrese la nueva cantidad del producto: "))
+        actualizar_producto(productos, producto, cantidad)
+        print("Producto actualizado")        
+      except ValueError:
+        print("Error: La cantidad debe ser un número entero.")
+        
+    elif accion == 'm':
+      mostrar_inventario(productos)
+      
+    elif accion == 's':
+      print("Programa finalizado.")
+      break
+    
+    else:
+      print("Error: Acción no válida.")
 
-productos = cargar_inventario()
-
-agregar = input("Desea agregar un producto? (s/n): ")
-
-if agregar == 's':
-  nuevo_producto = input("Ingrese el nombre del producto: ")
-  nueva_cantidad = int(input("Ingrese la cantidad del producto: "))
-  agregar_producto(productos,nuevo_producto, nueva_cantidad)
-
-actualizar = input("Desea actualizar la cantidad de un producto? (s/n): ")
-
-if actualizar == 's':
-  producto = input("Ingrese el nombre del producto: ")
-  cantidad = int(input("Ingrese la nueva cantidad del producto: "))
-  actualizar_producto(productos, producto, cantidad)
-
-mostrar_inventario(productos)
+# Ejecutar el programa sin importarlo, cuando se importa se ignorará
+if __name__ == '__main__':
+  main()
