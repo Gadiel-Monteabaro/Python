@@ -72,12 +72,23 @@ def calcular_promedio(notas):
   for i in notas:
     acumulador += i    
   return round(acumulador / len(notas), 2)      
+
+def mostrar_promedio(alumnos, nombre):
+  if nombre != '' and nombre.isalpha():
+    for i in alumnos:
+      if i['nombre'].lower() == nombre.lower():
+        try:
+          print(f'El promedio de {i["nombre"]} es: {i["promedio"]}')
+        except ValueError:
+          print("Error al mostrar alumno.")            
+  else:
+    print("Ingresar un nombre válido.")
        
 def main ():
   alumnos = cargar_alumnos()
   
   while True: 
-    accion = input("Desea agregar un alumno (a), agregar una nota (n), actualizar notas (u) o salir (s): ")
+    accion = input("Desea agregar un alumno (a), agregar una nota (n), actualizar notas (u), mostrar promedio de un alumno (m) o salir (s): ")
   
     if accion == 'a':
       nombre = input("Ingrese el nombre del alumno: ")
@@ -90,9 +101,14 @@ def main ():
     elif accion == 'u':
       nombre = input("Ingrese el nombre del alumno: ")
       actualizar_notas(alumnos, nombre)
+      
+    elif accion == 'm':
+      nombre = input("Ingrese el nombre del alumno: ")
+      mostrar_promedio(alumnos,nombre)
   
     elif accion == 's':
       print("Programa finalizado.")
+      break
 
 if __name__ == '__main__':
   main()
