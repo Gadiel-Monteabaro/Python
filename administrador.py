@@ -7,7 +7,7 @@ INVENTARIO = 'inventario.json'
 def cargar_inventario():
   if os.path.exists(INVENTARIO):
     with open(INVENTARIO, 'r', encoding="utf-8") as archivo:
-      return json.load(archivo)     
+      return json.load(archivo)   # convertir el archivo a un diccionario, permitiendo acceder a los datos
   return []
 
 # Guardar los productos en el inventario
@@ -31,8 +31,8 @@ def actualizar_producto(productos, nombre, cantidad):
     if producto['nombre'].lower() == nombre.lower():
       producto['cantidad'] = cantidad
       guardar_inventario(productos)
+      print("Producto actualizado.")
       return
-  print(f"Producto {nombre} no encontrado.") 
 
 # Mostrar el inventario
 def mostrar_inventario(productos):
@@ -60,7 +60,6 @@ def main():
       try:
         cantidad = int(input("Ingrese la nueva cantidad del producto: "))
         actualizar_producto(productos, producto, cantidad)
-        print("Producto actualizado")        
       except ValueError:
         print("Error: La cantidad debe ser un número entero.")
         
