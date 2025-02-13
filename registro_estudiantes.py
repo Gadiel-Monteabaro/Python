@@ -24,7 +24,7 @@ def agregar_alumno(alumnos, nombre):
     try:
       alumnos.append({'nombre': nombre,'notas': []})
       guardar_alumnos(alumnos)
-      print("Estudiante agregado.")
+      print("Alumno agregado.")
     except ValueError:
       print("Error al agregar el alumno.")
   else:
@@ -63,7 +63,7 @@ def actualizar_notas(alumnos, nombre):
         except ValueError:
           print("Error al actualizar las notas.")
         return
-    print("Estudiante no encontrado.")
+    print("Alumno no encontrado.")
   else:
     print("Ingresar un nombre válido.")
     
