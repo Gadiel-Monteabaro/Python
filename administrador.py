@@ -48,8 +48,8 @@ def main():
     
     if accion == 'a':
       nombre = input("Ingrese el nombre del producto: ")
+      cantidad = int(input("Ingrese la cantidad del producto: "))
       try:
-        cantidad = int(input("Ingrese la cantidad del producto: "))
         agregar_producto(productos, nombre, cantidad)
         print("Producto agregado")
       except ValueError:
@@ -57,8 +57,8 @@ def main():
 
     elif accion == 'u':
       producto = input("Ingrese el nombre del producto: ")
+      cantidad = int(input("Ingrese la nueva cantidad del producto: "))
       try:
-        cantidad = int(input("Ingrese la nueva cantidad del producto: "))
         actualizar_producto(productos, producto, cantidad)
       except ValueError:
         print("Error: La cantidad debe ser un número entero.")
