@@ -1,5 +1,4 @@
 # Escribe una función que reciba una lista de números y devuelva el promedio.
-
 def calcular_promedio(nums):
     if not nums:  
         return 0
