@@ -2,14 +2,19 @@
   {
     "nombre": "Gadiel",
     "notas": [
-      9.0,
       8.0,
-      7.0
+      2.0,
+      1.0
     ],
-    "promedio": 8.0
+    "promedio": 3.67
   },
   {
-    "nombre": "gadiel",
-    "notas": []
+    "nombre": "Monteabaro",
+    "notas": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "promedio": 10.0
   }
 ]

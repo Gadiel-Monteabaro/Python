@@ -40,18 +40,15 @@ def agregar_nota(alumnos, nombre):
     for i in alumnos:
       if i['nombre'].lower() == nombre.lower():
         if len(i['notas']) < 3:
-          nota_str = input("Ingrese la nota del alumno: ")
-          if nota_str.replace('.', '', 1).isdigit():  # Permite números con decimales
-            nota = float(nota_str)
-            if 0 <= nota <= 10:  # Ajusta el rango según tu sistema de notas
-              i['notas'].append(nota)
-              i['promedio'] = calcular_promedio(i['notas'])
-              guardar_alumnos(alumnos)
-              print("Nota agregada.")
-            else:
-                print("La nota debe estar entre 0 y 10.")
+          nota = float(input("Ingrese la nota del alumno: "))
+       
+          if 0 <= nota <= 10:  # Ajusta el rango según tu sistema de notas
+            i['notas'].append(nota)
+            i['promedio'] = calcular_promedio(i['notas'])
+            guardar_alumnos(alumnos)
+            print("Nota agregada.")
           else:
-              print("Ingrese un número válido.")
+              print("La nota debe estar entre 0 y 10.")          
         else:
             print("El alumno ya tiene todas las notas.")
         return  # Sale del bucle si encuentra el alumno
@@ -60,33 +57,34 @@ def agregar_nota(alumnos, nombre):
     print("Ingrese un nombre válido.")    
     
 def actualizar_notas(alumnos, nombre):
-  if nombre and nombre.isalpha():
-    for i in alumnos:
-      if i['nombre'].lower() == nombre.lower():
-        nuevas_notas = []
-        
-        while len(nuevas_notas) < 3:
-          nota_str = input(f"Ingrese la nota {len(nuevas_notas) + 1} del alumno: ")
-          
-          if nota_str.replace('.', '', 1).isdigit():  # Permite números con decimales
-            nota = float(nota_str)
-            if 0 <= nota <= 10:  # Ajusta el rango según el sistema de notas
-              
+  
+  if not nombre:
+    print("Ingrese un nombre válido.")
+    return
+
+  for i in alumnos:
+    if i['nombre'].lower() == nombre.lower():
+      nuevas_notas = []
+      
+      while len(nuevas_notas) < 3:
+        try:
+          nota = float(input(f"Ingrese la nota {len(nuevas_notas) + 1} del alumno: ").strip())        
+
+          if 0 <= nota <= 10:
               nuevas_notas.append(nota)
-            else:
-              print("La nota debe estar entre 0 y 10.")
           else:
-                print("Ingrese un número válido.")
-        
-        i['notas'] = nuevas_notas
-        i['promedio'] = calcular_promedio(i['notas'])
-        guardar_alumnos(alumnos)
-        print("Notas actualizadas.")
-        return  # Salir de la función después de actualizar al alumno
+              print("La nota debe estar entre 0 y 10.")
+        except ValueError:
+          print("Ingrese un número válido.")
+      
+      i['notas'] = nuevas_notas
+      i['promedio'] = calcular_promedio(i['notas'])
+      guardar_alumnos(alumnos)
+      print("Notas actualizadas.")
+      return  # Salir de la función después de actualizar al alumno
     
-    print("Alumno no encontrado.")
-  else:
-      print("Ingrese un nombre válido.")
+  print("Alumno no encontrado.")
+  
 
     
 def calcular_promedio(notas):
@@ -115,19 +113,19 @@ def main ():
     accion = input("Desea agregar un alumno (a), agregar una nota (n), actualizar notas (u), mostrar promedio de un alumno (m) o salir (s): ")
   
     if accion == 'a':
-      nombre = input("Ingrese el nombre del alumno: ")
+      nombre = input("Ingrese el nombre del alumno: ").strip()
       agregar_alumno(alumnos, nombre)
     
     elif accion == 'n':   
-      nombre = input("Ingrese el nombre del alumno: ")
+      nombre = input("Ingrese el nombre del alumno: ").strip()
       agregar_nota(alumnos, nombre)
       
     elif accion == 'u':
-      nombre = input("Ingrese el nombre del alumno: ")
+      nombre = input("Ingrese el nombre del alumno: ").strip()
       actualizar_notas(alumnos, nombre)
       
     elif accion == 'm':
-      nombre = input("Ingrese el nombre del alumno: ")
+      nombre = input("Ingrese el nombre del alumno: ").strip()
       mostrar_promedio(alumnos,nombre)
   
     elif accion == 's':
