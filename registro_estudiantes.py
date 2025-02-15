@@ -20,52 +20,74 @@ def guardar_alumnos(alumnos):
     json.dump(alumnos, archivo, indent=2)
 
 def agregar_alumno(alumnos, nombre):
-  if nombre != '' and nombre.isalpha():
-    try:
-      alumnos.append({'nombre': nombre,'notas': []})
-      guardar_alumnos(alumnos)
-      print("Alumno agregado.")
-    except ValueError:
-      print("Error al agregar el alumno.")
+  if nombre and nombre.isalpha():
+    nombre = nombre.capitalize()  # Normaliza el nombre con mayúscula inicial
+    
+    # Verificar si el alumno ya existe
+    if any(alumno['nombre'].lower() == nombre.lower() for alumno in alumnos):
+      print("El alumno ya está registrado.")
+      return
+    
+    alumnos.append({'nombre': nombre, 'notas': []})
+    guardar_alumnos(alumnos)
+    print("Alumno agregado.")
   else:
-    print("Ingresar un nombre válido.")
+      print("Ingrese un nombre válido.")
+
 
 def agregar_nota(alumnos, nombre):
-  if nombre != '' and nombre.isalpha():
+  if nombre and nombre.isalpha():
     for i in alumnos:
       if i['nombre'].lower() == nombre.lower():
-        if len(i['notas']) != 3:
-          try:
-            nota = float(input("Ingrese la nota del alumno: "))
-            i['notas'].append(nota)
-            i['promedio'] = calcular_promedio(i['notas'])
-            guardar_alumnos(alumnos)
-            print("Nota agregada.")
-          except ValueError:
-            print("Error al agregar la nota.")
+        if len(i['notas']) < 3:
+          nota_str = input("Ingrese la nota del alumno: ")
+          if nota_str.replace('.', '', 1).isdigit():  # Permite números con decimales
+            nota = float(nota_str)
+            if 0 <= nota <= 10:  # Ajusta el rango según tu sistema de notas
+              i['notas'].append(nota)
+              i['promedio'] = calcular_promedio(i['notas'])
+              guardar_alumnos(alumnos)
+              print("Nota agregada.")
+            else:
+                print("La nota debe estar entre 0 y 10.")
+          else:
+              print("Ingrese un número válido.")
         else:
-          print("El alumno ya tiene todas las notas.")        
-  else:
-    print("Ingresar un nombre válido.")     
-    
-def actualizar_notas(alumnos, nombre):
-  if nombre != '' and nombre.isalpha():
-    for i in alumnos:
-      if i['nombre'].lower() == nombre.lower():
-        try:
-          i['notas'] = []
-          while len(i['notas']) < 3:
-            nota = float(input("Ingrese la nueva nota del alumno: "))
-            i['notas'].append(nota)
-          i['promedio'] = calcular_promedio(i['notas'])
-          guardar_alumnos(alumnos)
-          print("Notas actualizadas.")
-        except ValueError:
-          print("Error al actualizar las notas.")
-        return
+            print("El alumno ya tiene todas las notas.")
+        return  # Sale del bucle si encuentra el alumno
     print("Alumno no encontrado.")
   else:
-    print("Ingresar un nombre válido.")
+    print("Ingrese un nombre válido.")    
+    
+def actualizar_notas(alumnos, nombre):
+  if nombre and nombre.isalpha():
+    for i in alumnos:
+      if i['nombre'].lower() == nombre.lower():
+        nuevas_notas = []
+        
+        while len(nuevas_notas) < 3:
+          nota_str = input(f"Ingrese la nota {len(nuevas_notas) + 1} del alumno: ")
+          
+          if nota_str.replace('.', '', 1).isdigit():  # Permite números con decimales
+            nota = float(nota_str)
+            if 0 <= nota <= 10:  # Ajusta el rango según el sistema de notas
+              
+              nuevas_notas.append(nota)
+            else:
+              print("La nota debe estar entre 0 y 10.")
+          else:
+                print("Ingrese un número válido.")
+        
+        i['notas'] = nuevas_notas
+        i['promedio'] = calcular_promedio(i['notas'])
+        guardar_alumnos(alumnos)
+        print("Notas actualizadas.")
+        return  # Salir de la función después de actualizar al alumno
+    
+    print("Alumno no encontrado.")
+  else:
+      print("Ingrese un nombre válido.")
+
     
 def calcular_promedio(notas):
   acumulador = 0
@@ -74,13 +96,15 @@ def calcular_promedio(notas):
   return round(acumulador / len(notas), 2)      
 
 def mostrar_promedio(alumnos, nombre):
-  if nombre != '' and nombre.isalpha():
+  if nombre and nombre.isalpha():
     for i in alumnos:
       if i['nombre'].lower() == nombre.lower():
-        try:
+        if 'promedio' in i:  # Verifica si la clave 'promedio' existe
           print(f'El promedio de {i["nombre"]} es: {i["promedio"]}')
-        except ValueError:
-          print("Error al mostrar alumno.")            
+        else:
+          print(f'El alumno {i["nombre"]} aún no tiene un promedio calculado.')
+        return  # Sale del bucle si encontró al alumno
+    print("Alumno no encontrado.")
   else:
     print("Ingresar un nombre válido.")
        

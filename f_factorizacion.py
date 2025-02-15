@@ -6,7 +6,7 @@ def factorial(num):
     raise ValueError("El valor debe ser un número entero no negativo.")
     
   for i in range(1, num + 1):
-    acumulador = acumulador * i  
+    acumulador = acumulador * i
     
   return acumulador
 
@@ -23,7 +23,7 @@ def factorialWhile(num):
     
   return acumulador
 
-print("Calculo Factorial.")
+print("Calculadora Factorial.")
 numero = int(input("Ingresar un número entero positivo \n"))
 print(f"Calculo factorial con For : {factorial(numero)}")
-print(f"Calculo factorial con While : {factorialWhile(numero)}")
+print(f"Calculo factorial con While : {factorialWhile(numero)}") 
