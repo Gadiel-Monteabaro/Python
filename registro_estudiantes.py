@@ -21,9 +21,8 @@ def guardar_alumnos(alumnos):
 
 def agregar_alumno(alumnos, nombre):
   if nombre and nombre.isalpha():
-    nombre = nombre.capitalize()  # Normaliza el nombre con mayúscula inicial
-    
-    # Verificar si el alumno ya existe
+    nombre = nombre.capitalize()  # Normaliza el nombre con mayúscula inicial    
+   
     if any(alumno['nombre'].lower() == nombre.lower() for alumno in alumnos):
       print("El alumno ya está registrado.")
       return
@@ -56,8 +55,7 @@ def agregar_nota(alumnos, nombre):
   else:
     print("Ingrese un nombre válido.")    
     
-def actualizar_notas(alumnos, nombre):
-  
+def actualizar_notas(alumnos, nombre):  
   if not nombre:
     print("Ingrese un nombre válido.")
     return
@@ -97,11 +95,11 @@ def mostrar_promedio(alumnos, nombre):
   if nombre and nombre.isalpha():
     for i in alumnos:
       if i['nombre'].lower() == nombre.lower():
-        if 'promedio' in i:  # Verifica si la clave 'promedio' existe
+        if 'promedio' in i: 
           print(f'El promedio de {i["nombre"]} es: {i["promedio"]}')
         else:
           print(f'El alumno {i["nombre"]} aún no tiene un promedio calculado.')
-        return  # Sale del bucle si encontró al alumno
+        return
     print("Alumno no encontrado.")
   else:
     print("Ingresar un nombre válido.")
