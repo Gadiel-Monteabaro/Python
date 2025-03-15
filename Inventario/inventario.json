@@ -1,15 +1,5 @@
 [
   {
-    "id": "b454754f-02b4-42da-8eb4-fc73dc53987d",
-    "nombre": "Coca-Cola 2lts",
-    "cantidad": 24
-  },
-  {
-    "id": "3890328f-0bee-417b-99ba-fb996e1bd5fe",
-    "nombre": "Sprite",
-    "cantidad": 12
-  },
-  {
     "id": "afc8fc72-3180-4a8e-b451-acb3a384f7cf",
     "nombre": "Quilmes",
     "cantidad": 24
@@ -22,6 +12,11 @@
   {
     "id": "0b65d64d-7aaa-47cf-abc0-f4234f677aa6",
     "nombre": "Manteca",
+    "cantidad": 12
+  },
+  {
+    "id": "bc4c7a89-f144-4f35-aaf8-fe22368c7612",
+    "nombre": "Sprite",
     "cantidad": 12
   }
 ]

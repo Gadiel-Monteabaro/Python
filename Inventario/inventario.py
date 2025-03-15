@@ -7,8 +7,8 @@
     e. Salir
 """
 
-import os 
-import json
+import os
+import json 
 import uuid
 
 INVENTARIO = os.path.join(os.path.dirname(__file__), 'inventario.json')
@@ -34,7 +34,7 @@ def guardar_inventario(productos):
 # agregar productos al inventario
 def agregar_producto(productos, nombre, cantidad):
     for producto in productos:
-      if producto["nombre"] == nombre:
+      if producto["nombre"].lower() == nombre.lower():
         print("El producto ya ha sido agregado")
         return
  
@@ -43,7 +43,6 @@ def agregar_producto(productos, nombre, cantidad):
     
     guardar_inventario(productos)
     print(f"Producto {nombre} agregado con {cantidad} unidades.")   
-
     
 # mostrar inventario  
 def mostrar_inventario(productos):
@@ -62,6 +61,7 @@ def buscar_producto(productos, nombre):
       return
   print(f"El producto no fue encontrado.")
   
+# eliminar producto
 def eliminar_producto(productos, nombre):
   for producto in productos:
     if producto['nombre'].lower() == nombre.lower():
@@ -82,7 +82,7 @@ def main():
       nombre = input("Ingresar nombre del producto: ").strip()       
       if not nombre:
         print("Por favor ingresar el nombre del producto")
-        continue
+        continue      
       
       while True:
         try:
@@ -121,8 +121,7 @@ def main():
       
     if accion == "e":
       break
-            
-    
+
 # Ejecutar el programa sin importarlo, cuando se importa se ignorará
 if __name__ == '__main__':
   main()
