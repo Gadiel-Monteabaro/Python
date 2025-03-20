@@ -13,5 +13,10 @@
     "id": "50f40730-aae7-4d04-bfa1-5edffd3aded5",
     "nombre": "Coca-cola",
     "cantidad": 12
+  },
+  {
+    "id": "be4f76ee-256c-410c-a1ba-10668c0bed85",
+    "nombre": "Quilmes",
+    "cantidad": 12
   }
 ]
