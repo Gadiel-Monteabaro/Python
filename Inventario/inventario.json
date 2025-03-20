@@ -1,22 +1,17 @@
 [
   {
-    "id": "afc8fc72-3180-4a8e-b451-acb3a384f7cf",
-    "nombre": "Quilmes",
+    "id": "9a6ef870-ffbb-46c3-a1d2-291342eea0a1",
+    "nombre": "Sprite",
+    "cantidad": 12
+  },
+  {
+    "id": "d1f82eee-8f3b-4a74-ab4a-563f0e048b15",
+    "nombre": "Azucar",
     "cantidad": 24
   },
   {
-    "id": "03ff731a-a0bf-4b70-89c4-8a5ed469538e",
-    "nombre": "Leche",
-    "cantidad": 12
-  },
-  {
-    "id": "0b65d64d-7aaa-47cf-abc0-f4234f677aa6",
-    "nombre": "Manteca",
-    "cantidad": 12
-  },
-  {
-    "id": "bc4c7a89-f144-4f35-aaf8-fe22368c7612",
-    "nombre": "Sprite",
+    "id": "50f40730-aae7-4d04-bfa1-5edffd3aded5",
+    "nombre": "Coca-cola",
     "cantidad": 12
   }
 ]
