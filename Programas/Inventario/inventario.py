@@ -44,7 +44,7 @@ def agregar_producto(productos, nombre, cantidad):
 
     id_producto = str(uuid.uuid4())
     productos.append(
-        {"id": id_producto, "nombre": nombre.capitalize(), "cantidad": cantidad}
+        {"id": id_producto, "nombre": nombre.lower().capitalize(), "cantidad": cantidad}
     )
 
     guardar_inventario(productos)
@@ -91,7 +91,7 @@ def main():
         )
 
         if accion == "a":
-            nombre = input("Ingresar nombre del producto: ").strip()
+            nombre = input("Ingresar nombre del producto: ").strip().lower()
             if not nombre:
                 print("Por favor ingresar el nombre del producto")
                 continue
