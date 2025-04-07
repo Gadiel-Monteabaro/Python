@@ -1,3 +1,4 @@
+# Escribe un programa que pida al usuario los dos catetos de un triángulo rectángulo y calcule la hipotenusa.
 cateto_1 = float(input("Ingresar el valor del cateto 1: "))
 cateto_2 = float(input("Ingresar el valor del cateto 2: "))
 
