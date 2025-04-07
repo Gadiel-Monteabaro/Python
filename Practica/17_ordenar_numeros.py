@@ -1,3 +1,4 @@
+# Crea una lista de números desordenados y ordénala en orden ascendente y descendente.
 numeros = [3, 5, 8, 7, 4, 9, 6]
 
 for i in range(len(numeros)):

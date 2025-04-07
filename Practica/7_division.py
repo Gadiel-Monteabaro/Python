@@ -1,3 +1,4 @@
+# Escribe un programa que permita realizar la división de dos números siempre y cuando el denominador no sea 0.
 primer_numero = int(input("Ingrese el primer número: "))
 segundo_numero = int(input("Ingrese el segundo número: "))
 

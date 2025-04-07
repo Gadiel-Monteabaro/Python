@@ -1,3 +1,4 @@
+# Escribe un programa que solicite al usuario que ingrese una contraseña y confirme la contraseña. El programa debe verificar si ambas contraseñas coinciden y no están vacías.
 usuarioPassword = input("Ingrese su contraseña: ")
 password = "HolaMundo!"
 
