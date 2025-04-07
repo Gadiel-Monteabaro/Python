@@ -5,4 +5,4 @@ añoNacimiento = int(input("Ingrese su año de nacimiento: "))
 
 edad = datetime.now().year - añoNacimiento
 
-print(f"Hola {nombreUsuario}, tu edad es {edad} años.")
+print(f"Hola {nombreUsuario.capitalize()}, tu edad es {edad} años.")
