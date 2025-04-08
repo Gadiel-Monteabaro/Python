@@ -7,6 +7,6 @@ def contar_numeros(num):
   for i in lista:
     if i == num:
       count += 1
-  print(count)
+  print(f"El número ingresado aparace {count} veces.")
 
 contar_numeros(num)
