@@ -1,7 +1,7 @@
-amigos = ['Ana', 'Monica', 'José', 'Camila', 'Raquel', 'Matías']
+amigos = ["Ana", "Monica", "José", "Camila", "Raquel", "Matías"]
 
 # Devuelve la posición (el index, un número) del amigo “Matías”.
-print("La posicion de Matías es ", amigos.index('Matías'))
+print("La posicion de Matías es ", amigos.index("Matías"))
 
 # Devuelve la misma lista pero añadiendo los amigos de la infancia “Ivana” y “Andrés” como otra lista.
 amigosInfancia = ["Ivana", "Andres"]
@@ -20,12 +20,11 @@ amigos.sort()
 print("Amigos ordenados alfabeticamente ", amigos)
 
 
-friends = ['Ana', 'Monica', 'José', 'Camila',
-           'Raquel', 'Matías', ['Gadiel', 'Melisa']]
+friends = ["Ana", "Monica", "José", "Camila", "Raquel", "Matías", ["Gadiel", "Melisa"]]
 
 countFriends = 0
 for i in friends:
-    if (type(i) == list):
+    if type(i) == list:
         for j in i:
             countFriends += 1
             break

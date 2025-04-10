@@ -1,4 +1,4 @@
-#Escribe un programa que cuente el número de vocales en una cadena de texto proporcionada por el usuario.
+# Escribe un programa que cuente el número de vocales en una cadena de texto proporcionada por el usuario.
 texto = input("Escribe un texto: ")
 vocales = "aeiouAEIOU"
 cantidad_de_vocales = 0

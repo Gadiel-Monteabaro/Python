@@ -2,11 +2,13 @@
 lista = [12, 1, 2, 5, 4, 6, 8, 4, 2, 1, 55, 4, 74, 2]
 num = int(input("Ingresar un número: "))
 
+
 def contar_numeros(num):
-  count = 0
-  for i in lista:
-    if i == num:
-      count += 1
-  print(f"El número ingresado aparace {count} veces.")
+    count = 0
+    for i in lista:
+        if i == num:
+            count += 1
+    print(f"El número ingresado aparace {count} veces.")
+
 
 contar_numeros(num)

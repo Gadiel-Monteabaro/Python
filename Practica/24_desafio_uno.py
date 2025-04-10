@@ -1,6 +1,6 @@
 # Modifica el siguiente código (que identifica el mayor de dos números) a
 # fin de encontrar ahora el mayor de 3 números.
-numero_1 = 12   
+numero_1 = 12
 numero_2 = -5
 numero_3 = 8
 if numero_1 > numero_2:
@@ -22,5 +22,5 @@ mayor = lista[0]
 for i in lista:
     if i > mayor:
         mayor = i
-        
+
 print(f"El mayor de los tres números es: {mayor}")
