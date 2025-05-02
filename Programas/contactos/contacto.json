@@ -1,0 +1,22 @@
+[
+  {
+    "id": "440b9c55-6ab5-483d-825b-25268799b798",
+    "nombre": "Pablo",
+    "telefono": "+54 3518596855"
+  },
+  {
+    "id": "1d377b82-d8e2-44b1-9c54-570f38fd8425",
+    "nombre": "Ampi",
+    "telefono": "+54 3518053537"
+  },
+  {
+    "id": "953fd86c-8494-4853-ae8b-dc3e035f3035",
+    "nombre": "Maria",
+    "telefono": "+54 3518023237"
+  },
+  {
+    "id": "9900d984-2d94-41dd-9b9c-f9a2a7e9637d",
+    "nombre": "Gadiel",
+    "telefono": "3518053537"
+  }
+]
