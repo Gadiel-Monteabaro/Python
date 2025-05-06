@@ -34,22 +34,43 @@ def guardar_contactos(contactos):
             print(f"Error al cargar los contactos: {error}")
 
 
-# agregar contacto
-def agregar_contacto(contactos, nombre, telefono):
-    for contacto in contactos:
-        if contacto["nombre"].lower() == nombre.lower():
-            print("El contacto ya ha sido agregado")
-            return
-
+# nuevo_contacto
+def nuevo_contacto(nombre, telefono):
     id_contacto = str(uuid.uuid4())
     nuevo_contacto = {
         "id": id_contacto,
         "nombre": nombre.capitalize(),
         "telefono": telefono,
     }
-    contactos.append(nuevo_contacto)
 
+    return nuevo_contacto
+
+
+# validaciones
+def validarInputs(contactos, nombre, telefono):
+    if not nombre:
+        return "El nombre no puede esta vacío"
+    if not telefono:
+        return "El teléfono no puede estar vacío"
+    for contacto in contactos:
+        if (
+            contacto["nombre"].lower() == nombre.lower()
+            or contacto["telefono"] == telefono
+        ):
+            return "El nombre o número de contacto ya existe"
+
+    return None
+
+
+# agregar contacto
+def agregar_contacto(contactos, nombre, telefono):
+    mensaje_error = validarInputs(contactos, nombre, telefono)
+    if mensaje_error:
+        print(mensaje_error)
+
+    contactos.append(nuevo_contacto(nombre, telefono))
     guardar_contactos(contactos)
+
     print("El contacto fue agregado correctamente")
 
 
@@ -63,14 +84,11 @@ def main():
 
         if accion == "a":
             nombre = input("Nombre del contacto: ")
-            if not nombre:
-                print("Ingresar nombre del contacto")
-                continue
             telefono = input("Número de telefono: ")
-            if not telefono:
-                print("Ingresar número del contacto")
-                continue
             agregar_contacto(contactos, nombre, telefono)
+
+        if accion == "d":
+            break
 
 
 if __name__ == "__main__":
