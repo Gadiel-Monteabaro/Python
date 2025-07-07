@@ -49,9 +49,9 @@ def nuevo_contacto(nombre, telefono):
 # validaciones
 def validarInputs(contactos, nombre, telefono):
     if not nombre:
-        return "El nombre no puede esta vacío"
+        return "El nombre no puede esta vacío"    
     if not telefono:
-        return "El teléfono no puede estar vacío"
+        return "El teléfono no puede estar vacío"    
     for contacto in contactos:
         if (
             contacto["nombre"].lower() == nombre.lower()
@@ -70,7 +70,6 @@ def agregar_contacto(contactos, nombre, telefono):
 
     contactos.append(nuevo_contacto(nombre, telefono))
     guardar_contactos(contactos)
-
     print("El contacto fue agregado correctamente")
 
 
