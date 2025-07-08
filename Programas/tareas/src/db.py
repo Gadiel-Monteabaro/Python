@@ -10,14 +10,18 @@ USER = os.getenv("USER")
 PASS = os.getenv("PASS")
 PORT = os.getenv("PORT")
 
-try:
-    conn = psycopg2.connect(
-        host=HOST,
-        dbname=DB_NAME,
-        user=USER,
-        password=PASS,
-        port=PORT,
-    )
-    print("Conexión exitosa")
-except Exception as e:
-    print(f"Error: {e}")
+
+def get_connection():
+    try:
+        conn = psycopg2.connect(
+            host=HOST,
+            dbname=DB_NAME,
+            user=USER,
+            password=PASS,
+            port=PORT,
+        )
+        print("Conexión exitosa")
+        return conn
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
