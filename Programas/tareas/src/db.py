@@ -20,7 +20,6 @@ def get_connection():
             password=PASS,
             port=PORT,
         )
-        print("Conexión exitosa")
         return conn
     except Exception as e:
         print(f"Error: {e}")
