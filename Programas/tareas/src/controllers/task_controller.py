@@ -40,7 +40,7 @@ def cambiar_estado(task_id):
                 query = "SELECT estado FROM tareas WHERE id = %s"
                 cursor.execute(query, (task_id,))
                 resultado = cursor.fetchone()
-                
+
                 if resultado is None:
                     print("Tarea no encontrada.")
 
@@ -62,9 +62,31 @@ def eliminar_tarea(task_id):
     try:
         with conn:
             with conn.cursor() as cursor:
-                query = "DELETE from tareas WHERE id = %s"
+                query = "DELETE FROM tareas WHERE id = %s"
                 cursor.execute(query, (task_id,))
         print("Tarea eliminada.")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        conn.close()
+
+
+# Permite filtrar tareas por completadas o no completadas
+def filtrar_tareas(estado):
+    conn = get_connection()
+    try:
+        with conn:
+            with conn.cursor() as cursor:
+                query = "SELECT id, titulo, descripcion, estado FROM tareas WHERE estado = %s"
+                cursor.execute(query, (estado,))
+                tareas = cursor.fetchall()
+                estado = "completadas" if estado else "no completadas"
+                print(f"Tareas {estado}: ")
+                for tarea in tareas:
+                    estado = "Completada" if tarea[3] else "No completada"
+                    print(f"{tarea[1]} - {tarea[2]} - Estado: {estado}")
+                if not tareas:
+                    print("No hay tareas")
     except Exception as e:
         print(f"Error: {e}")
     finally:

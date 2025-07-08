@@ -4,13 +4,14 @@ from controllers.task_controller import (
     listar_tareas,
     cambiar_estado,
     eliminar_tarea,
+    filtrar_tareas,
 )
 
 
 def menu():
     while True:
         accion = input(
-            "Agregar Tarea (1), Listar Tareas (2), Marcar tarea (3), Eliminar tarea (4), salir (e): "
+            "Agregar Tarea (1), Listar Tareas (2), Marcar tarea (3), Eliminar tarea (4), Filtrar tareas (5), salir (e): "
         )
 
         if accion == "1":
@@ -25,6 +26,12 @@ def menu():
         if accion == "4":
             id_tarea = input("ID para eliminar tarea: ")
             eliminar_tarea(id_tarea)
+        if accion == "5":
+            estado = input("Tareas completadas (1), Tareas no completadas (2) ")
+            if estado == "1":
+                filtrar_tareas(True)
+            if estado == "2":
+                filtrar_tareas(False)
         if accion == "e":
             break
 
