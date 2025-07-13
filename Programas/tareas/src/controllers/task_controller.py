@@ -1,4 +1,4 @@
-from db import get_connection
+from database.db import get_connection
 
 
 def nueva_tarea(titulo, descripcion):
@@ -43,6 +43,7 @@ def cambiar_estado(task_id):
 
                 if resultado is None:
                     print("Tarea no encontrada.")
+                    return
 
                 estado_actual = resultado[0]
                 nuevo_estado = not estado_actual
