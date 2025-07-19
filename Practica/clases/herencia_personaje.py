@@ -43,6 +43,7 @@ tirador = Tirador("Ashe", 100, 25)
 print(tirador.lanzar_flecha())
 mago = Mago("Skender", 100, 25)
 print(mago.meteorito())
+
 """
 Programa basadao en la programación orientada a objetos (POO)
 
@@ -54,6 +55,4 @@ b_ Crear clases derivadas para cada personaje especifico
     _herencia - estas clases heredarán de la clase Personaje
     _atributos - adicionales
     _metodos - lanzar fuego
-
-
 """
