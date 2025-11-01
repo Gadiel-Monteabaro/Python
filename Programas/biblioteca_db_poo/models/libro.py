@@ -8,13 +8,11 @@ class Libro:
         return f"'{self.titulo}' por {self.autor} - Estado: {self.estado}"
 
     def prestar(self):
-        if self.estado == "disponible":
-            self.estado = "prestado"
-            return True
-        return False
+        if self.estado:
+            self.estado = False
+        return "prestado" if not self.estado else "no disponible"
 
     def devolver(self):
-        if self.estado == "prestado":
-            self.estado = "disponible"
-            return True
-        return False
+        if not self.estado:
+            self.estado = True
+        return "disponible" if self.estado else "no devuelto"
